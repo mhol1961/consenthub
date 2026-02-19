@@ -112,7 +112,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="mb-4 inline-flex items-center">
               <Image
-                src="/logo-dark.png"
+                src="/consenthub/logo-dark.png"
                 alt="ConsentHub"
                 width={160}
                 height={36}

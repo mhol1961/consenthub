@@ -58,7 +58,7 @@ export default function Navbar() {
           className="group flex items-center transition-opacity duration-200 hover:opacity-80"
         >
           <Image
-            src="/logo-light.png"
+            src="/consenthub/logo-light.png"
             alt="ConsentHub"
             width={180}
             height={48}
@@ -66,7 +66,7 @@ export default function Navbar() {
             priority
           />
           <Image
-            src="/logo-dark.png"
+            src="/consenthub/logo-dark.png"
             alt="ConsentHub"
             width={180}
             height={48}

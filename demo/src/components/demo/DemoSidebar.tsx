@@ -75,7 +75,7 @@ export default function DemoSidebar({
               <div className="hidden h-8 w-8 rounded bg-teal lg:block" />
             ) : null}
             <Image
-              src="/logo-dark.png"
+              src="/consenthub/logo-dark.png"
               alt="ConsentHub"
               width={160}
               height={42}

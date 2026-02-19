@@ -215,14 +215,14 @@ function LoginStep({ onLogin }: { onLogin: () => void }) {
         <div className="text-center mb-10">
           <div className="mb-5 flex justify-center">
             <Image
-              src="/logo-light.png"
+              src="/consenthub/logo-light.png"
               alt="ConsentHub"
               width={200}
               height={56}
               className="h-14 w-auto dark:hidden"
             />
             <Image
-              src="/logo-dark.png"
+              src="/consenthub/logo-dark.png"
               alt="ConsentHub"
               width={200}
               height={56}
@@ -421,14 +421,14 @@ function DashboardStep({ onLogout }: { onLogout: () => void }) {
         <div className="max-w-2xl mx-auto px-5 py-4 flex items-center justify-between">
           <div className="flex items-center">
             <Image
-              src="/logo-light.png"
+              src="/consenthub/logo-light.png"
               alt="ConsentHub"
               width={140}
               height={32}
               className="h-8 w-auto dark:hidden"
             />
             <Image
-              src="/logo-dark.png"
+              src="/consenthub/logo-dark.png"
               alt="ConsentHub"
               width={140}
               height={32}
