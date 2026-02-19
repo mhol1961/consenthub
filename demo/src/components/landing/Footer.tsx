@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ShieldCheck,
   Lock,
@@ -110,9 +111,11 @@ export default function Footer() {
           {/* Column 1 — Brand */}
           <div>
             <Link href="/" className="mb-4 inline-flex items-center">
-              <img
+              <Image
                 src="/logo-dark.png"
                 alt="ConsentHub"
+                width={160}
+                height={36}
                 className="h-9 w-auto"
               />
             </Link>

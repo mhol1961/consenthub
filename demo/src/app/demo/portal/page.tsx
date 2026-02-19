@@ -17,6 +17,7 @@ import {
   Heart,
   ChevronRight,
 } from "lucide-react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 import patientsData from "@/data/patients.json";
@@ -213,14 +214,18 @@ function LoginStep({ onLogin }: { onLogin: () => void }) {
         {/* Branding */}
         <div className="text-center mb-10">
           <div className="mb-5 flex justify-center">
-            <img
+            <Image
               src="/logo-light.png"
               alt="ConsentHub"
+              width={200}
+              height={56}
               className="h-14 w-auto dark:hidden"
             />
-            <img
+            <Image
               src="/logo-dark.png"
               alt="ConsentHub"
+              width={200}
+              height={56}
               className="hidden h-14 w-auto dark:block"
             />
           </div>
@@ -415,14 +420,18 @@ function DashboardStep({ onLogout }: { onLogout: () => void }) {
       >
         <div className="max-w-2xl mx-auto px-5 py-4 flex items-center justify-between">
           <div className="flex items-center">
-            <img
+            <Image
               src="/logo-light.png"
               alt="ConsentHub"
+              width={140}
+              height={32}
               className="h-8 w-auto dark:hidden"
             />
-            <img
+            <Image
               src="/logo-dark.png"
               alt="ConsentHub"
+              width={140}
+              height={32}
               className="hidden h-8 w-auto dark:block"
             />
           </div>
