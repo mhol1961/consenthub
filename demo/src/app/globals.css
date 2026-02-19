@@ -1,0 +1,401 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-plus-jakarta-sans);
+  --font-serif: var(--font-dm-serif-display);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  /* ConsentHub custom colors — static palette tokens */
+  --color-navy: var(--ch-navy);
+  --color-navy-light: var(--ch-navy-light);
+  --color-teal: var(--ch-teal);
+  --color-teal-light: var(--ch-teal-light);
+  --color-teal-dark: var(--ch-teal-dark);
+  --color-success: var(--ch-success);
+  --color-warning: var(--ch-warning);
+  --color-indigo: var(--ch-indigo);
+}
+
+/* ==========================================================================
+   LIGHT MODE (default)
+   Background: slate-50 | Surface: white | Text: slate-900
+   ========================================================================== */
+
+:root {
+  --radius: 0.625rem;
+
+  /* shadcn semantic tokens */
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --card: #FFFFFF;
+  --card-foreground: #0F172A;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F172A;
+  --primary: #0F172A;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F1F5F9;
+  --secondary-foreground: #0F172A;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #0D9488;
+  --accent-foreground: #FFFFFF;
+  --destructive: #B91C1C;
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #0D9488;
+
+  /* Charts */
+  --chart-1: #0D9488;
+  --chart-2: #1E293B;
+  --chart-3: #3B82F6;
+  --chart-4: #F59E0B;
+  --chart-5: #F43F5E;
+
+  /* Sidebar */
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #0F172A;
+  --sidebar-primary: #0F172A;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F1F5F9;
+  --sidebar-accent-foreground: #0F172A;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #0D9488;
+
+  /* ConsentHub brand tokens — mode-aware */
+  --ch-navy: #0F172A;
+  --ch-navy-light: #1E293B;
+  --ch-teal: #0D9488;
+  --ch-teal-light: #14B8A6;
+  --ch-teal-dark: #0F766E;
+  --ch-success: #15803D;
+  --ch-warning: #B45309;
+  --ch-indigo: #6366F1;
+  --cta-gradient: linear-gradient(to bottom, #0F172A, #1E293B, #0F172A);
+}
+
+/* ==========================================================================
+   DARK MODE
+   Background: slate-950 | Surface: slate-900 | Text: slate-100
+   NEVER use pure #000000 backgrounds or pure #FFFFFF text
+   ========================================================================== */
+
+.dark {
+  --background: #020617;
+  --foreground: #F1F5F9;
+  --card: #0F172A;
+  --card-foreground: #F1F5F9;
+  --popover: #0F172A;
+  --popover-foreground: #F1F5F9;
+  --primary: #E2E8F0;
+  --primary-foreground: #0F172A;
+  --secondary: #1E293B;
+  --secondary-foreground: #F1F5F9;
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;
+  --accent: #2DD4BF;
+  --accent-foreground: #020617;
+  --destructive: #F87171;
+  --border: #334155;
+  --input: #334155;
+  --ring: #2DD4BF;
+
+  /* Charts — brighter for dark backgrounds */
+  --chart-1: #2DD4BF;
+  --chart-2: #94A3B8;
+  --chart-3: #60A5FA;
+  --chart-4: #FBBF24;
+  --chart-5: #FB7185;
+
+  /* Sidebar */
+  --sidebar: #0F172A;
+  --sidebar-foreground: #F1F5F9;
+  --sidebar-primary: #F1F5F9;
+  --sidebar-primary-foreground: #0F172A;
+  --sidebar-accent: #1E293B;
+  --sidebar-accent-foreground: #F1F5F9;
+  --sidebar-border: #334155;
+  --sidebar-ring: #2DD4BF;
+
+  /* ConsentHub brand tokens — dark-adapted */
+  --ch-navy: #E2E8F0;
+  --ch-navy-light: #CBD5E1;
+  --ch-teal: #2DD4BF;
+  --ch-teal-light: #5EEAD4;
+  --ch-teal-dark: #14B8A6;
+  --ch-success: #4ADE80;
+  --ch-warning: #FBBF24;
+  --ch-indigo: #818CF8;
+  --cta-gradient: linear-gradient(to bottom, #0F172A, #020617, #0F172A);
+}
+
+/* ==========================================================================
+   Base styles
+   ========================================================================== */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-dm-serif-display), Georgia, serif;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar — light mode */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Custom scrollbar — dark mode */
+.dark ::-webkit-scrollbar-track {
+  background: #1E293B;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748B;
+}
+
+/* ==========================================================================
+   Hero gradient mesh — animated orbs
+   3 soft blobs that drift and morph on 20-30s cycles
+   Light mode: lower opacity  |  Dark mode: richer
+   ========================================================================== */
+
+@keyframes hero-orb-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%;
+  }
+  25% {
+    transform: translate(60px, -40px) scale(1.1);
+    border-radius: 50% 50% 40% 60% / 40% 60% 50% 50%;
+  }
+  50% {
+    transform: translate(20px, 40px) scale(0.95);
+    border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+  }
+  75% {
+    transform: translate(-30px, 20px) scale(1.05);
+    border-radius: 45% 55% 55% 45% / 55% 45% 55% 45%;
+  }
+}
+
+@keyframes hero-orb-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    border-radius: 50% 50% 40% 60% / 40% 60% 50% 50%;
+  }
+  33% {
+    transform: translate(-50px, 50px) scale(1.08);
+    border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+  }
+  66% {
+    transform: translate(40px, -30px) scale(0.92);
+    border-radius: 40% 60% 45% 55% / 55% 45% 60% 40%;
+  }
+}
+
+@keyframes hero-orb-3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    border-radius: 55% 45% 50% 50% / 50% 50% 45% 55%;
+  }
+  20% {
+    transform: translate(30px, 50px) scale(1.06);
+    border-radius: 45% 55% 60% 40% / 55% 45% 50% 50%;
+  }
+  50% {
+    transform: translate(-40px, -20px) scale(0.94);
+    border-radius: 50% 50% 45% 55% / 40% 60% 55% 45%;
+  }
+  80% {
+    transform: translate(50px, -40px) scale(1.02);
+    border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+  }
+}
+
+.hero-orb-1 {
+  animation: hero-orb-1 24s ease-in-out infinite;
+}
+.hero-orb-2 {
+  animation: hero-orb-2 28s ease-in-out infinite;
+}
+.hero-orb-3 {
+  animation: hero-orb-3 22s ease-in-out infinite;
+}
+
+@keyframes hero-float {
+  0%, 100% { transform: perspective(1200px) rotateY(-5deg) rotateX(2deg) translateY(0); }
+  50%      { transform: perspective(1200px) rotateY(-5deg) rotateX(2deg) translateY(-14px); }
+}
+
+.hero-dashboard-float {
+  animation: hero-float 5s ease-in-out infinite;
+}
+
+/* Dark mode glow ring around the browser mockup */
+.dark .hero-dashboard-glow {
+  box-shadow:
+    0 0 60px -12px rgba(45, 212, 191, 0.25),
+    0 0 30px -8px rgba(45, 212, 191, 0.15);
+}
+
+/* ==========================================================================
+   Consent wizard — step pulse ring
+   ========================================================================== */
+
+@keyframes step-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(13, 148, 136, 0);
+  }
+}
+
+.animate-step-pulse {
+  animation: step-pulse 2s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   Self-drawing SVG checkmark for success step
+   ========================================================================== */
+
+@keyframes draw-check {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes draw-circle {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ==========================================================================
+   Micro-interactions
+   ========================================================================== */
+
+/* ── Button press / lift (transform-only, GPU composited) ───────────── */
+button:not(:disabled):not([role="switch"]):not([role="checkbox"]):hover,
+a[role="button"]:not(:disabled):hover {
+  transform: scale(1.02);
+}
+button:not(:disabled):not([role="switch"]):not([role="checkbox"]):active,
+a[role="button"]:not(:disabled):active {
+  transform: scale(0.98);
+}
+button:not(:disabled):not([role="switch"]):not([role="checkbox"]),
+a[role="button"]:not(:disabled) {
+  transition: transform 120ms ease, color 200ms, background-color 200ms, border-color 200ms, box-shadow 200ms, opacity 200ms;
+}
+
+/* ── Pending badge pulse ────────────────────────────────────────────── */
+@keyframes badge-pending-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+.animate-badge-pending {
+  animation: badge-pending-pulse 2s ease-in-out infinite;
+}
+
+/* ── Table row hover sweep (left-to-right background wipe) ──────────── */
+.row-hover-sweep {
+  background-image: linear-gradient(90deg, rgba(13, 148, 136, 0.05), rgba(13, 148, 136, 0.02));
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  background-position: left;
+  transition: background-size 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.row-hover-sweep:hover {
+  background-size: 100% 100%;
+}
+.dark .row-hover-sweep {
+  background-image: linear-gradient(90deg, rgba(45, 212, 191, 0.06), rgba(45, 212, 191, 0.02));
+}
+
+/* ==========================================================================
+   Reduced motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb-1,
+  .hero-orb-2,
+  .hero-orb-3,
+  .hero-dashboard-float,
+  .animate-step-pulse,
+  .animate-badge-pending {
+    animation: none !important;
+  }
+  button:not(:disabled):hover,
+  button:not(:disabled):active,
+  a[role="button"]:hover,
+  a[role="button"]:active {
+    transform: none !important;
+  }
+  .row-hover-sweep {
+    transition: none !important;
+  }
+}

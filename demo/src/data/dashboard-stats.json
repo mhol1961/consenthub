@@ -1,0 +1,31 @@
+{
+  "total_consents": 1247,
+  "active_consents": 3891,
+  "expiring_30d": 43,
+  "compliance_rate": 94.7,
+  "total_patients": 1247,
+  "pending_consents": 23,
+  "revoked_consents": 89,
+  "expired_consents": 161,
+  "consents_by_type": [
+    { "type": "HIPAA Marketing", "count": 412, "color": "#0D9488" },
+    { "type": "HIPAA Treatment", "count": 387, "color": "#6366F1" },
+    { "type": "GDPR", "count": 298, "color": "#0EA5E9" },
+    { "type": "Research", "count": 156, "color": "#F59E0B" },
+    { "type": "General", "count": 194, "color": "#64748B" }
+  ],
+  "monthly_trend": [
+    { "month": "Mar 2025", "consents": 98, "revocations": 12, "expired": 8 },
+    { "month": "Apr 2025", "consents": 112, "revocations": 15, "expired": 6 },
+    { "month": "May 2025", "consents": 125, "revocations": 10, "expired": 9 },
+    { "month": "Jun 2025", "consents": 142, "revocations": 18, "expired": 11 },
+    { "month": "Jul 2025", "consents": 156, "revocations": 14, "expired": 7 },
+    { "month": "Aug 2025", "consents": 168, "revocations": 16, "expired": 10 },
+    { "month": "Sep 2025", "consents": 185, "revocations": 13, "expired": 12 },
+    { "month": "Oct 2025", "consents": 198, "revocations": 22, "expired": 8 },
+    { "month": "Nov 2025", "consents": 215, "revocations": 15, "expired": 14 },
+    { "month": "Dec 2025", "consents": 193, "revocations": 20, "expired": 11 },
+    { "month": "Jan 2026", "consents": 241, "revocations": 12, "expired": 9 },
+    { "month": "Feb 2026", "consents": 268, "revocations": 8, "expired": 7 }
+  ]
+}

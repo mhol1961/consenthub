@@ -1,0 +1,87 @@
+[
+  {
+    "id": "tmpl-001",
+    "organization_id": "org-001",
+    "name": "HIPAA Marketing Authorization",
+    "consent_type": "marketing_email",
+    "regulation_type": "hipaa",
+    "legal_text": "I hereby authorize TAS Health Partners and its affiliates to use my personal health information for marketing communications, including email newsletters, appointment reminders, and health education materials. This authorization is made pursuant to 45 CFR § 164.508. I understand that I may revoke this authorization at any time by submitting a written request to the Privacy Officer. I understand that treatment, payment, enrollment, or eligibility for benefits may not be conditioned on my signing this authorization. This authorization expires 24 months from the date of signature unless revoked earlier.",
+    "plain_language_summary": "You're giving us permission to send you marketing emails about health services, appointment reminders, and educational content. You can change your mind anytime.",
+    "version": 1,
+    "expiration_days": 730,
+    "requires_witness": false,
+    "is_active": true,
+    "custom_fields": [],
+    "created_at": "2025-06-15T10:00:00Z",
+    "updated_at": "2025-06-15T10:00:00Z"
+  },
+  {
+    "id": "tmpl-002",
+    "organization_id": "org-001",
+    "name": "HIPAA Treatment Consent",
+    "consent_type": "treatment",
+    "regulation_type": "hipaa",
+    "legal_text": "I consent to the use and disclosure of my protected health information (PHI) for the purposes of treatment, payment, and healthcare operations as described in the Notice of Privacy Practices provided to me. I acknowledge that I have received a copy of the Notice of Privacy Practices. I understand that I have the right to request restrictions on certain uses and disclosures of my PHI, though the organization is not required to agree to such restrictions. This consent remains in effect until revoked by the patient in writing.",
+    "plain_language_summary": "You're consenting to let us use your health information to provide treatment, process insurance, and run our practice. This is required for us to provide care.",
+    "version": 2,
+    "expiration_days": null,
+    "requires_witness": false,
+    "is_active": true,
+    "custom_fields": [],
+    "created_at": "2025-05-01T09:00:00Z",
+    "updated_at": "2025-08-20T14:30:00Z"
+  },
+  {
+    "id": "tmpl-003",
+    "organization_id": "org-001",
+    "name": "GDPR Data Processing Consent",
+    "consent_type": "data_sharing",
+    "regulation_type": "gdpr",
+    "legal_text": "In accordance with the General Data Protection Regulation (EU) 2016/679, I provide my explicit consent for the processing of my personal data, including health data categorized as special category data under Article 9. The data controller is TAS Health Partners. My data will be processed for healthcare delivery, appointment scheduling, and communication purposes. I understand my rights under GDPR including the right to access (Art. 15), rectification (Art. 16), erasure (Art. 17), restriction (Art. 18), data portability (Art. 20), and to object (Art. 21). I may withdraw this consent at any time without affecting the lawfulness of processing based on consent before its withdrawal.",
+    "plain_language_summary": "You're allowing us to store and use your personal data under European privacy law. You can request to see, change, or delete your data at any time.",
+    "version": 1,
+    "expiration_days": 365,
+    "requires_witness": false,
+    "is_active": true,
+    "custom_fields": [],
+    "created_at": "2025-07-10T11:00:00Z",
+    "updated_at": "2025-07-10T11:00:00Z"
+  },
+  {
+    "id": "tmpl-004",
+    "organization_id": "org-001",
+    "name": "Clinical Research Consent",
+    "consent_type": "research",
+    "regulation_type": "hipaa",
+    "legal_text": "I voluntarily consent to participate in the clinical research study described to me. I authorize the use and disclosure of my protected health information for research purposes as outlined in 45 CFR § 164.512(i). I understand that my participation is voluntary and that I may withdraw at any time without penalty or loss of benefits to which I am otherwise entitled. I understand the potential risks and benefits have been explained to me. Research data may be shared with regulatory authorities and research sponsors in de-identified form. A witness signature is required for this authorization.",
+    "plain_language_summary": "You're agreeing to participate in a medical research study and allowing us to use your health data for research. Participation is voluntary — you can leave the study anytime.",
+    "version": 1,
+    "expiration_days": 1095,
+    "requires_witness": true,
+    "is_active": true,
+    "custom_fields": [
+      { "name": "study_name", "type": "text", "required": true },
+      { "name": "principal_investigator", "type": "text", "required": true }
+    ],
+    "created_at": "2025-08-01T08:00:00Z",
+    "updated_at": "2025-08-01T08:00:00Z"
+  },
+  {
+    "id": "tmpl-005",
+    "organization_id": "org-001",
+    "name": "General Communication Preferences",
+    "consent_type": "marketing_sms",
+    "regulation_type": "tcpa",
+    "legal_text": "I consent to receive communications from TAS Health Partners via the following channels: SMS text messages, phone calls, and postal mail. I understand that message and data rates may apply for SMS communications. I consent to receive up to 8 messages per month. I may opt out of SMS communications at any time by replying STOP. I may opt out of phone calls by notifying the office. This consent is provided in compliance with the Telephone Consumer Protection Act (TCPA) and applicable state regulations.",
+    "plain_language_summary": "You're choosing how you'd like us to contact you — by text, phone, or mail. You can change your preferences or opt out at any time.",
+    "version": 3,
+    "expiration_days": 365,
+    "requires_witness": false,
+    "is_active": true,
+    "custom_fields": [
+      { "name": "preferred_channels", "type": "multiselect", "required": true, "options": ["sms", "phone", "mail"] }
+    ],
+    "created_at": "2025-04-15T10:00:00Z",
+    "updated_at": "2025-11-05T16:20:00Z"
+  }
+]
