@@ -9,20 +9,38 @@ import { AuditTrail } from "./scenes/AuditTrail";
 import { PricingComparison } from "./scenes/PricingComparison";
 import { FeatureGrid } from "./scenes/FeatureGrid";
 import { CTAEndCard } from "./scenes/CTAEndCard";
+import { ShortClip1 } from "./compositions/ShortClip1";
+import { ShortClip2 } from "./compositions/ShortClip2";
+import { ShortClip3 } from "./compositions/ShortClip3";
+import { ShortClip4 } from "./compositions/ShortClip4";
+import { TwoMinDemo } from "./compositions/TwoMinDemo";
+import { FullOverview } from "./compositions/FullOverview";
 
 export const RemotionRoot: React.FC = () => {
   return (
-    <Folder name="Scenes">
-      <Composition id="logo-intro" component={LogoIntro} durationInFrames={120} fps={30} width={1920} height={1080} />
-      <Composition id="problem-scene" component={ProblemScene} durationInFrames={300} fps={30} width={1920} height={1080} />
-      <Composition id="solution-scene" component={SolutionScene} durationInFrames={300} fps={30} width={1920} height={1080} />
-      <Composition id="dashboard-demo" component={DashboardDemo} durationInFrames={450} fps={30} width={1920} height={1080} />
-      <Composition id="consent-wizard" component={ConsentWizard} durationInFrames={360} fps={30} width={1920} height={1080} />
-      <Composition id="sync-visualization" component={SyncVisualization} durationInFrames={300} fps={30} width={1920} height={1080} />
-      <Composition id="audit-trail" component={AuditTrail} durationInFrames={300} fps={30} width={1920} height={1080} />
-      <Composition id="pricing-comparison" component={PricingComparison} durationInFrames={300} fps={30} width={1920} height={1080} />
-      <Composition id="feature-grid" component={FeatureGrid} durationInFrames={300} fps={30} width={1920} height={1080} />
-      <Composition id="cta-endcard" component={CTAEndCard} durationInFrames={150} fps={30} width={1920} height={1080} />
-    </Folder>
+    <>
+      <Folder name="Scenes">
+        <Composition id="logo-intro" component={LogoIntro} durationInFrames={120} fps={30} width={1920} height={1080} />
+        <Composition id="problem-scene" component={ProblemScene} durationInFrames={300} fps={30} width={1920} height={1080} />
+        <Composition id="solution-scene" component={SolutionScene} durationInFrames={300} fps={30} width={1920} height={1080} />
+        <Composition id="dashboard-demo" component={DashboardDemo} durationInFrames={450} fps={30} width={1920} height={1080} />
+        <Composition id="consent-wizard" component={ConsentWizard} durationInFrames={360} fps={30} width={1920} height={1080} />
+        <Composition id="sync-visualization" component={SyncVisualization} durationInFrames={300} fps={30} width={1920} height={1080} />
+        <Composition id="audit-trail" component={AuditTrail} durationInFrames={300} fps={30} width={1920} height={1080} />
+        <Composition id="pricing-comparison" component={PricingComparison} durationInFrames={300} fps={30} width={1920} height={1080} />
+        <Composition id="feature-grid" component={FeatureGrid} durationInFrames={300} fps={30} width={1920} height={1080} />
+        <Composition id="cta-endcard" component={CTAEndCard} durationInFrames={150} fps={30} width={1920} height={1080} />
+      </Folder>
+      <Folder name="Short-Clips">
+        <Composition id="clip-1-broken-consent" component={ShortClip1} durationInFrames={900} fps={30} width={1920} height={1080} />
+        <Composition id="clip-2-dynamics-sync" component={ShortClip2} durationInFrames={900} fps={30} width={1920} height={1080} />
+        <Composition id="clip-3-hipaa-compliance" component={ShortClip3} durationInFrames={900} fps={30} width={1920} height={1080} />
+        <Composition id="clip-4-pricing" component={ShortClip4} durationInFrames={900} fps={30} width={1920} height={1080} />
+      </Folder>
+      <Folder name="Demos">
+        <Composition id="two-min-demo" component={TwoMinDemo} durationInFrames={3600} fps={30} width={1920} height={1080} />
+        <Composition id="full-overview" component={FullOverview} durationInFrames={13500} fps={30} width={1920} height={1080} />
+      </Folder>
+    </>
   );
 };
