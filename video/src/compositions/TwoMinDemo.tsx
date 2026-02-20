@@ -18,36 +18,21 @@ import { CTAEndCard } from "../scenes/CTAEndCard";
  * TwoMinDemo — Full 2-minute product demo
  * 120 seconds = 3600 frames at 30fps
  *
- * All 10 scenes in sequence with fade(15f) transitions.
- * 9 transitions x 15f = 135 frames overlap
- * Total sequence frames needed: 3600 + 135 = 3735
+ * Scene start frames (cumulative - transitions):
+ *   LogoIntro:          0      (dur 135f)
+ *   ProblemScene:       120    (dur 360f)
+ *   SolutionScene:      465    (dur 360f)
+ *   DashboardDemo:      810    (dur 540f)
+ *   ConsentWizard:      1335   (dur 450f)
+ *   SyncVisualization:  1770   (dur 390f)
+ *   AuditTrail:         2145   (dur 360f)
+ *   FeatureGrid:        2490   (dur 360f)
+ *   PricingComparison:  2835   (dur 360f)
+ *   CTAEndCard:         3180   (dur 420f)
  *
- * Scene durations:
- *   LogoIntro:          135f  (4.5s)
- *   ProblemScene:       360f  (12s)
- *   SolutionScene:      360f  (12s)
- *   DashboardDemo:      540f  (18s)
- *   ConsentWizard:      450f  (15s)
- *   SyncVisualization:  390f  (13s)
- *   AuditTrail:         360f  (12s)
- *   FeatureGrid:        360f  (12s)
- *   PricingComparison:  360f  (12s)
- *   CTAEndCard:         420f  (14s)
- *
- * Sum: 135+360+360+540+450+390+360+360+360+420 = 3735
- * Actual: 3735 - 135 = 3600
- *
- * Audio start frames (cumulative - transitions):
- *   LogoIntro:          0
- *   ProblemScene:       135 - 15 = 120
- *   SolutionScene:      120 + 360 - 15 = 465
- *   DashboardDemo:      465 + 360 - 15 = 810
- *   ConsentWizard:      810 + 540 - 15 = 1335
- *   SyncVisualization:  1335 + 450 - 15 = 1770
- *   AuditTrail:         1770 + 390 - 15 = 2145
- *   FeatureGrid:        2145 + 360 - 15 = 2490
- *   PricingComparison:  2490 + 360 - 15 = 2835
- *   CTAEndCard:         2835 + 360 - 15 = 3180
+ * Brief VO durations: 42, 272, 241, 226, 254, 255, 245, 281, 185, 103 frames
+ * Logo intro brief (42f) fits in 135f scene — no overlap.
+ * All other VOs are shorter than their scenes — no overlaps.
  */
 export const TwoMinDemo: React.FC = () => {
   return (
@@ -55,7 +40,7 @@ export const TwoMinDemo: React.FC = () => {
       {/* Background music — loops for entire 2 minutes */}
       <Audio src={staticFile("background-music.mp3")} volume={0.12} loop />
 
-      {/* Brief voiceover per scene */}
+      {/* Brief voiceover per scene — starts when each scene begins */}
       <Sequence from={0}>
         <Audio src={staticFile("audio/logo-intro-brief.mp3")} volume={0.88} />
       </Sequence>

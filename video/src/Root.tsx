@@ -15,6 +15,8 @@ import { ShortClip3 } from "./compositions/ShortClip3";
 import { ShortClip4 } from "./compositions/ShortClip4";
 import { TwoMinDemo } from "./compositions/TwoMinDemo";
 import { FullOverview } from "./compositions/FullOverview";
+import { ShortClipAuF } from "./compositions/ShortClipAuF";
+import { ShortClipAuM } from "./compositions/ShortClipAuM";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -36,6 +38,8 @@ export const RemotionRoot: React.FC = () => {
         <Composition id="clip-2-dynamics-sync" component={ShortClip2} durationInFrames={900} fps={30} width={1920} height={1080} />
         <Composition id="clip-3-hipaa-compliance" component={ShortClip3} durationInFrames={900} fps={30} width={1920} height={1080} />
         <Composition id="clip-4-pricing" component={ShortClip4} durationInFrames={900} fps={30} width={1920} height={1080} />
+        <Composition id="clip-australian-female" component={ShortClipAuF} durationInFrames={900} fps={30} width={1920} height={1080} />
+        <Composition id="clip-australian-male" component={ShortClipAuM} durationInFrames={900} fps={30} width={1920} height={1080} />
       </Folder>
       <Folder name="Demos">
         <Composition id="two-min-demo" component={TwoMinDemo} durationInFrames={3600} fps={30} width={1920} height={1080} />
