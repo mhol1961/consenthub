@@ -1,18 +1,23 @@
 import { Composition } from "remotion";
+import { GradientBackground } from "./components/GradientBackground";
+import { AnimatedText } from "./components/AnimatedText";
 
 const TestComp: React.FC = () => {
   return (
-    <div
-      style={{
-        flex: 1,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#0F172A",
-      }}
-    >
-      <h1 style={{ color: "white", fontSize: 80 }}>ConsentHub Video</h1>
-    </div>
+    <GradientBackground>
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <AnimatedText text="ConsentHub" fontSize={80} />
+      </div>
+    </GradientBackground>
   );
 };
 
