@@ -100,7 +100,7 @@ const cardSlideUp = {
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="bg-slate-50 py-24 dark:bg-slate-950">
+    <section id="pricing" className="bg-gradient-to-b from-slate-50 via-white to-slate-50 py-24 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -113,7 +113,7 @@ export default function Pricing() {
           <p className="text-sm font-semibold uppercase tracking-widest text-teal">
             Pricing Plans
           </p>
-          <h2 className="mt-3 font-serif text-3xl text-navy sm:text-4xl lg:text-5xl">
+          <h2 className="mt-3 font-serif text-4xl font-bold text-navy md:text-5xl">
             Simple, Transparent Pricing
           </h2>
           <p className="mt-4 text-lg text-slate-500 dark:text-slate-400">
@@ -137,25 +137,20 @@ export default function Pricing() {
               className={cn(
                 "relative flex flex-col overflow-hidden rounded-2xl border bg-white transition-all duration-300 hover:-translate-y-1 dark:bg-slate-900",
                 tier.popular
-                  ? "z-10 border-teal shadow-xl shadow-teal/10 md:scale-[1.04] dark:shadow-teal-950/20"
-                  : "border-slate-200 shadow-sm hover:shadow-md dark:border-slate-700 dark:shadow-none dark:hover:shadow-lg dark:hover:shadow-slate-950/30"
+                  ? "z-10 border-2 border-teal-500 shadow-xl shadow-teal-500/10 md:scale-105 dark:shadow-teal-500/5"
+                  : "border border-slate-200 shadow-sm hover:shadow-md dark:border-slate-700 dark:shadow-none dark:hover:shadow-lg dark:hover:shadow-slate-950/30"
               )}
             >
-              {/* Teal accent bar on popular */}
+              {/* Popular badge — overlapping top */}
               {tier.popular && (
-                <div className="h-1 w-full bg-gradient-to-r from-teal via-teal-light to-teal" />
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <span className="inline-flex items-center rounded-full bg-teal-600 px-4 py-1 text-sm font-bold text-white shadow-md shadow-teal/25">
+                    Most Popular
+                  </span>
+                </div>
               )}
 
-              <div className="flex flex-1 flex-col p-8">
-                {/* Popular badge */}
-                {tier.popular && (
-                  <div className="mb-4">
-                    <span className="inline-flex items-center rounded-full bg-teal/10 px-3 py-1 text-xs font-semibold text-teal dark:bg-teal/15">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-
+              <div className={cn("flex flex-1 flex-col", tier.popular ? "p-8 pt-10" : "p-8")}>
                 {/* Tier name & description */}
                 <h3 className="font-serif text-xl text-navy">{tier.name}</h3>
                 <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
@@ -164,10 +159,17 @@ export default function Pricing() {
 
                 {/* Price */}
                 <div className="mt-6 flex items-baseline">
-                  <span className="text-4xl font-bold tracking-tight text-navy">
+                  <span
+                    className={cn(
+                      "font-bold tracking-tight",
+                      tier.popular
+                        ? "bg-gradient-to-r from-teal-600 to-teal-400 bg-clip-text text-5xl text-transparent dark:from-teal-400 dark:to-teal-200"
+                        : "text-5xl text-navy"
+                    )}
+                  >
                     {tier.price}
                   </span>
-                  <span className="ml-1.5 text-sm font-medium text-slate-400 dark:text-slate-500">
+                  <span className="ml-1 text-base font-normal text-slate-500">
                     /month
                   </span>
                 </div>
@@ -176,24 +178,12 @@ export default function Pricing() {
                 <div className="my-6 h-px w-full bg-slate-100 dark:bg-slate-800" />
 
                 {/* Feature list */}
-                <ul className="mb-8 flex flex-1 flex-col gap-3.5">
+                <ul className="mb-8 flex flex-1 flex-col gap-4">
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
-                      <div
-                        className={cn(
-                          "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full",
-                          tier.popular
-                            ? "bg-teal/10"
-                            : "bg-slate-100 dark:bg-slate-800"
-                        )}
-                      >
+                      <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-500/10">
                         <Check
-                          className={cn(
-                            "h-3 w-3",
-                            tier.popular
-                              ? "text-teal"
-                              : "text-slate-500 dark:text-slate-400"
-                          )}
+                          className="h-3 w-3 text-teal-500"
                           strokeWidth={3}
                         />
                       </div>
@@ -206,13 +196,13 @@ export default function Pricing() {
 
                 {/* CTA */}
                 {tier.popular ? (
-                  <Button className="h-11 w-full cursor-pointer rounded-lg bg-teal text-sm font-semibold text-white shadow-md shadow-teal/20 transition-all duration-200 hover:bg-teal-dark hover:shadow-lg hover:shadow-teal/25">
+                  <Button className="w-full py-3 cursor-pointer bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl transition-colors">
                     {tier.cta}
                   </Button>
                 ) : (
                   <Button
                     variant="outline"
-                    className="h-11 w-full cursor-pointer rounded-lg border-slate-300 text-sm font-semibold text-navy transition-all duration-200 hover:border-slate-400 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-200 dark:hover:border-slate-500 dark:hover:bg-slate-800"
+                    className="h-12 w-full cursor-pointer rounded-xl border-2 border-slate-300 text-base font-semibold text-navy transition-all duration-200 hover:border-teal hover:bg-teal/5 hover:text-teal dark:border-slate-600 dark:text-slate-200 dark:hover:border-teal dark:hover:bg-teal/10 dark:hover:text-teal-light"
                   >
                     {tier.cta}
                   </Button>

@@ -111,6 +111,7 @@
   --ch-warning: #B45309;
   --ch-indigo: #6366F1;
   --cta-gradient: linear-gradient(to bottom, #0F172A, #1E293B, #0F172A);
+  --dot-grid-color: #e2e8f0;
 }
 
 /* ==========================================================================
@@ -166,6 +167,7 @@
   --ch-warning: #FBBF24;
   --ch-indigo: #818CF8;
   --cta-gradient: linear-gradient(to bottom, #0F172A, #020617, #0F172A);
+  --dot-grid-color: rgba(30, 41, 59, 0.5);
 }
 
 /* ==========================================================================
@@ -178,6 +180,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image: radial-gradient(circle, var(--dot-grid-color) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
   h1, h2, h3, h4 {
     font-family: var(--font-dm-serif-display), Georgia, serif;
@@ -285,19 +289,25 @@ html {
 }
 
 @keyframes hero-float {
-  0%, 100% { transform: perspective(1200px) rotateY(-5deg) rotateX(2deg) translateY(0); }
-  50%      { transform: perspective(1200px) rotateY(-5deg) rotateX(2deg) translateY(-14px); }
+  0%, 100% { transform: perspective(1200px) rotateY(-6deg) rotateX(3deg) translateY(0); }
+  50%      { transform: perspective(1200px) rotateY(-6deg) rotateX(3deg) translateY(-8px); }
 }
 
 .hero-dashboard-float {
-  animation: hero-float 5s ease-in-out infinite;
+  animation: hero-float 6s ease-in-out infinite;
 }
 
-/* Dark mode glow ring around the browser mockup */
+/* Colored glow ring around the browser mockup */
+.hero-dashboard-glow {
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.12),
+    0 20px 40px -8px rgba(13, 148, 136, 0.15);
+}
+
 .dark .hero-dashboard-glow {
   box-shadow:
-    0 0 60px -12px rgba(45, 212, 191, 0.25),
-    0 0 30px -8px rgba(45, 212, 191, 0.15);
+    0 0 80px -12px rgba(45, 212, 191, 0.30),
+    0 0 40px -8px rgba(45, 212, 191, 0.20);
 }
 
 /* ==========================================================================

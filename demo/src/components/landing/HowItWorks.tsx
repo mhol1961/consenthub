@@ -72,7 +72,7 @@ const stepFade = {
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="bg-white py-24 dark:bg-slate-900">
+    <section id="how-it-works" className="bg-slate-50 py-24 dark:bg-slate-900/50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -85,7 +85,7 @@ export default function HowItWorks() {
           <p className="text-sm font-semibold uppercase tracking-widest text-teal">
             Simple Process
           </p>
-          <h2 className="mt-3 font-serif text-3xl text-navy sm:text-4xl lg:text-5xl">
+          <h2 className="mt-3 font-serif text-4xl font-bold text-navy md:text-5xl">
             How It Works
           </h2>
           <p className="mt-4 text-lg text-slate-500 dark:text-slate-400">
@@ -104,17 +104,17 @@ export default function HowItWorks() {
           {/* ---- Connecting line (desktop: horizontal, mobile: vertical) ---- */}
           {/* Desktop horizontal dashed line — sits behind the badges */}
           <div
-            className="pointer-events-none absolute left-[calc(16.67%+24px)] right-[calc(16.67%+24px)] top-[24px] hidden h-px border-t-2 border-dashed border-slate-300 lg:block dark:border-slate-600"
+            className="pointer-events-none absolute left-[calc(16.67%+32px)] right-[calc(16.67%+32px)] top-[32px] hidden border-t-2 border-dashed border-teal-300 lg:block dark:border-teal-800"
             aria-hidden="true"
           />
-          {/* Mobile vertical dashed line */}
+          {/* Mobile vertical dashed line — centered on 64px badge (left-8 = 32px) */}
           <div
-            className="pointer-events-none absolute bottom-[24px] left-6 top-[24px] w-px border-l-2 border-dashed border-slate-300 lg:hidden dark:border-slate-600"
+            className="pointer-events-none absolute bottom-8 left-8 top-8 border-l-2 border-dashed border-teal-300 lg:hidden dark:border-teal-800"
             aria-hidden="true"
           />
 
           {/* Steps grid */}
-          <div className="relative grid gap-12 lg:grid-cols-3 lg:gap-8">
+          <div className="relative grid items-stretch gap-12 lg:grid-cols-3 lg:gap-8">
             {steps.map((step) => {
               const Icon = step.icon;
 
@@ -122,24 +122,25 @@ export default function HowItWorks() {
                 <motion.div
                   key={step.number}
                   variants={stepFade}
-                  className="flex gap-5 lg:flex-col lg:items-center lg:text-center"
+                  className="flex gap-5 lg:flex-col lg:items-center lg:text-center lg:h-full"
                 >
-                  {/* Number badge */}
-                  <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-teal text-lg font-bold text-white shadow-md shadow-teal/20">
+                  {/* Number badge — large with ring */}
+                  <div className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-teal-600 text-2xl font-bold text-white shadow-lg shadow-teal/25 ring-4 ring-teal-100 dark:ring-teal-900">
                     {step.number}
                   </div>
 
-                  <div className="lg:mt-2">
+                  {/* Step card */}
+                  <div className="flex-1 rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md lg:mt-4 dark:border-slate-700 dark:bg-slate-900">
                     {/* Icon */}
-                    <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800">
+                    <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-teal-50 dark:bg-teal-900/30">
                       <Icon
-                        className="h-6 w-6 text-teal"
+                        className="h-8 w-8 text-teal-500"
                         strokeWidth={1.5}
                       />
                     </div>
 
                     {/* Title */}
-                    <h3 className="mb-2 font-serif text-xl text-navy">
+                    <h3 className="mb-2 font-serif text-xl font-semibold text-navy">
                       {step.title}
                     </h3>
 

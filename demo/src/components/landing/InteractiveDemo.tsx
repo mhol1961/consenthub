@@ -92,7 +92,7 @@ function ConsentCaptureDemo() {
             <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
               Step 1 — Select Template
             </p>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
               {MINI_TEMPLATES.map((t) => (
                 <button
                   key={t.id}
@@ -560,21 +560,26 @@ function AuditTrailDemo() {
 
 function BrowserFrame({ children, url }: { children: React.ReactNode; url: string }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-xl shadow-slate-900/5 dark:border-slate-700/60 dark:bg-slate-900 dark:shadow-black/20">
-      {/* Chrome */}
-      <div className="flex items-center gap-2 border-b border-slate-200 bg-slate-100 px-3 py-2 dark:border-slate-700 dark:bg-slate-800">
-        <div className="flex items-center gap-1.5">
-          <div className="h-2.5 w-2.5 rounded-full bg-red-400" />
-          <div className="h-2.5 w-2.5 rounded-full bg-amber-400" />
-          <div className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+    <div className="relative">
+      {/* Colored glow underneath */}
+      <div className="pointer-events-none absolute -inset-4 rounded-3xl bg-teal/5 blur-2xl dark:bg-teal/[0.03]" />
+
+      <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-900/10 dark:border-slate-700/60 dark:bg-slate-900 dark:shadow-black/30">
+        {/* Chrome */}
+        <div className="flex h-10 items-center gap-2 border-b border-slate-200 bg-slate-100 px-4 dark:border-slate-700 dark:bg-slate-800">
+          <div className="flex items-center gap-1.5">
+            <div className="h-3 w-3 rounded-full bg-red-400" />
+            <div className="h-3 w-3 rounded-full bg-amber-400" />
+            <div className="h-3 w-3 rounded-full bg-emerald-400" />
+          </div>
+          <div className="mx-3 flex flex-1 items-center justify-center gap-2 rounded-lg bg-white px-3 py-1 dark:bg-slate-900">
+            <Lock className="h-2.5 w-2.5 text-emerald-500" />
+            <span className="truncate text-[11px] text-slate-500 dark:text-slate-400">{url}</span>
+          </div>
         </div>
-        <div className="mx-2 flex flex-1 items-center gap-2 rounded-md bg-white px-3 py-1 dark:bg-slate-900">
-          <Lock className="h-2.5 w-2.5 text-emerald-500" />
-          <span className="truncate text-[11px] text-slate-500 dark:text-slate-400">{url}</span>
-        </div>
+        {/* Content */}
+        {children}
       </div>
-      {/* Content */}
-      {children}
     </div>
   );
 }
@@ -587,7 +592,7 @@ export default function InteractiveDemo() {
   const [activeTab, setActiveTab] = useState<TabId>("consent");
 
   return (
-    <section className="bg-slate-50 py-24 dark:bg-slate-950/50">
+    <section className="bg-white py-24 dark:bg-slate-950">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -600,7 +605,7 @@ export default function InteractiveDemo() {
           <p className="text-sm font-semibold uppercase tracking-widest text-teal">
             Try It Yourself
           </p>
-          <h2 className="mt-3 font-serif text-3xl text-navy sm:text-4xl">
+          <h2 className="mt-3 font-serif text-4xl font-bold text-navy md:text-5xl">
             See It In Action
           </h2>
           <p className="mt-4 text-lg text-slate-500 dark:text-slate-400">
@@ -618,7 +623,7 @@ export default function InteractiveDemo() {
         >
           {/* Segmented control */}
           <div className="mb-6 flex justify-center">
-            <div className="relative inline-flex rounded-xl border border-slate-200 bg-white p-1 dark:border-slate-700 dark:bg-slate-900">
+            <div className="relative inline-flex rounded-xl border border-slate-200 bg-slate-100 p-1 shadow-sm dark:border-slate-700 dark:bg-slate-800">
               {TABS.map((tab) => {
                 const Icon = tab.icon;
                 const isActive = activeTab === tab.id;
@@ -629,7 +634,7 @@ export default function InteractiveDemo() {
                     type="button"
                     onClick={() => setActiveTab(tab.id)}
                     className={cn(
-                      "relative z-10 inline-flex cursor-pointer items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors duration-200",
+                      "relative z-10 inline-flex cursor-pointer items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors duration-200",
                       isActive
                         ? "text-white"
                         : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
@@ -638,7 +643,7 @@ export default function InteractiveDemo() {
                     {isActive && (
                       <motion.div
                         layoutId="demo-tab-active"
-                        className="absolute inset-0 rounded-lg bg-teal shadow-sm"
+                        className="absolute inset-0 rounded-lg bg-teal-600 shadow-md shadow-teal/20"
                         transition={{ type: "spring", stiffness: 350, damping: 30 }}
                       />
                     )}

@@ -79,14 +79,14 @@ function FooterLinkColumn({
             {link.href.startsWith("/") ? (
               <Link
                 href={link.href}
-                className="text-sm text-slate-400 transition-colors duration-200 hover:text-teal-light"
+                className="text-sm text-slate-300 transition-colors duration-200 hover:text-white"
               >
                 {link.label}
               </Link>
             ) : (
               <a
                 href={link.href}
-                className="text-sm text-slate-400 transition-colors duration-200 hover:text-teal-light"
+                className="text-sm text-slate-300 transition-colors duration-200 hover:text-white"
               >
                 {link.label}
               </a>
@@ -148,7 +148,7 @@ export default function Footer() {
           {complianceBadges.map((badge) => (
             <div
               key={badge.label}
-              className="flex items-center gap-2 rounded-lg border border-slate-700 px-4 py-2 text-sm text-slate-300"
+              className="flex items-center gap-2 rounded-lg border border-slate-600 bg-slate-800/50 px-4 py-2.5 text-sm font-medium text-slate-300"
             >
               <badge.icon className="size-4 shrink-0 text-teal" />
               <span>{badge.label}</span>
@@ -157,7 +157,7 @@ export default function Footer() {
         </div>
 
         {/* ---- Bottom bar ---- */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-800 pt-8 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-700 pt-8 sm:flex-row">
           <p className="text-sm text-slate-500">
             &copy; 2026 ConsentHub. All rights reserved.
           </p>

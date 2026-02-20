@@ -107,14 +107,17 @@ function MiniDonut() {
 
 function DashboardMockup() {
   return (
-    <div className="hero-dashboard-float relative w-full max-w-[580px]">
-      {/* Ambient glow (dark mode enhanced via CSS class) */}
-      <div className="absolute -inset-6 rounded-3xl bg-teal/8 blur-3xl dark:bg-teal/5" />
+    <div className="hero-dashboard-float relative w-full max-w-[640px]">
+      {/* Ambient glow (enhanced via CSS class) */}
+      <div className="absolute -inset-10 rounded-3xl bg-teal/15 blur-3xl dark:bg-teal/10" />
+
+      {/* Teal glow beneath mockup */}
+      <div className="absolute -bottom-4 left-1/4 right-1/4 h-8 bg-teal-500/20 blur-2xl rounded-full" />
 
       {/* Browser frame */}
-      <div className="hero-dashboard-glow relative overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-2xl shadow-slate-900/10 dark:border-slate-700/60 dark:bg-slate-900 dark:shadow-black/40">
+      <div className="hero-dashboard-glow relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white dark:border-slate-700/60 dark:bg-slate-900">
         {/* ── Browser chrome ────────────────────────────────────────── */}
-        <div className="flex items-center gap-2 border-b border-slate-200 bg-slate-100 px-3 py-2 dark:border-slate-700 dark:bg-slate-800">
+        <div className="flex items-center gap-2 border-b border-slate-200 bg-slate-100 px-4 py-3 dark:border-slate-700 dark:bg-slate-800">
           {/* Traffic lights */}
           <div className="flex items-center gap-1.5">
             <div className="h-2.5 w-2.5 rounded-full bg-red-400" />
@@ -345,21 +348,12 @@ export default function Hero() {
     <section className="relative flex min-h-screen items-center overflow-hidden pt-24">
       {/* ---- Gradient mesh background ---- */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Orb 1 — teal, top-right */}
-        <div
-          className="hero-orb-1 absolute -right-32 -top-32 h-[500px] w-[500px] opacity-[0.08] blur-3xl dark:opacity-[0.12]"
-          style={{ background: "radial-gradient(circle, #0D9488 0%, transparent 70%)" }}
-        />
-        {/* Orb 2 — indigo, bottom-left */}
-        <div
-          className="hero-orb-2 absolute -bottom-40 -left-40 h-[550px] w-[550px] opacity-[0.06] blur-3xl dark:opacity-[0.10]"
-          style={{ background: "radial-gradient(circle, #6366F1 0%, transparent 70%)" }}
-        />
-        {/* Orb 3 — navy, center-right */}
-        <div
-          className="hero-orb-3 absolute right-1/4 top-1/3 h-[400px] w-[400px] opacity-[0.04] blur-3xl dark:opacity-[0.08]"
-          style={{ background: "radial-gradient(circle, #0F172A 0%, transparent 70%)" }}
-        />
+        {/* Orb 1 — teal, top-left */}
+        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-teal-400 opacity-20 blur-[128px] animate-pulse" />
+        {/* Orb 2 — indigo, bottom-right */}
+        <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-indigo-500 opacity-15 blur-[128px] animate-pulse" style={{ animationDelay: '2s' }} />
+        {/* Orb 3 — sky, center */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-sky-400 opacity-10 blur-[100px] animate-pulse" style={{ animationDelay: '4s' }} />
       </div>
 
       {/* ---- Content ---- */}
@@ -375,7 +369,7 @@ export default function Hero() {
           >
             {/* 1. Trust badge */}
             <motion.div variants={fadeUp}>
-              <span className="inline-flex items-center gap-2 rounded-full border border-teal/20 bg-teal/5 px-4 py-1.5 text-sm font-medium text-teal dark:border-teal/30 dark:bg-teal/10">
+              <span className="inline-flex items-center gap-2 rounded-full border border-teal/30 bg-gradient-to-r from-teal/10 to-indigo/10 px-4 py-2 text-sm font-semibold text-teal shadow-sm dark:border-teal/40 dark:from-teal/15 dark:to-indigo/15">
                 <ShieldCheck className="h-4 w-4" />
                 HIPAA Compliant · SOC 2 Type II
               </span>
@@ -384,7 +378,7 @@ export default function Hero() {
             {/* 2. Headline */}
             <motion.h1
               variants={fadeUp}
-              className="mt-6 font-serif text-[clamp(2.5rem,5vw,4rem)] leading-[1.08] text-navy"
+              className="mt-6 font-serif text-4xl leading-[1.12] text-navy sm:text-5xl md:text-6xl lg:text-7xl"
             >
               Patient Consent Management,{" "}
               <span className="text-teal">Built for Dynamics&nbsp;365</span>
@@ -402,12 +396,12 @@ export default function Hero() {
             {/* 4. Dual CTAs */}
             <motion.div
               variants={fadeUp}
-              className="mt-8 flex flex-wrap items-center gap-4"
+              className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
             >
               <Button
                 asChild
                 size="lg"
-                className="cursor-pointer rounded-lg bg-teal px-7 text-base font-semibold text-white shadow-md shadow-teal/20 transition-all duration-200 hover:bg-teal-dark hover:shadow-lg hover:shadow-teal/25"
+                className="cursor-pointer rounded-xl bg-gradient-to-r from-teal-dark to-teal px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-teal/25 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-teal/30"
               >
                 <Link href="/demo/dashboard">See Demo</Link>
               </Button>
@@ -415,7 +409,7 @@ export default function Hero() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="cursor-pointer rounded-lg border-slate-300 px-7 text-base font-semibold text-navy transition-all duration-200 hover:border-slate-400 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-200 dark:hover:border-slate-500 dark:hover:bg-slate-800"
+                className="cursor-pointer rounded-xl border-2 border-slate-300 px-8 py-4 text-lg font-semibold text-navy transition-all duration-200 hover:-translate-y-0.5 hover:border-teal hover:bg-teal/5 hover:text-teal dark:border-slate-500 dark:text-slate-200 dark:hover:border-teal dark:hover:bg-teal/10 dark:hover:text-teal-light"
               >
                 <a href="#pricing">View Pricing</a>
               </Button>
@@ -426,8 +420,21 @@ export default function Hero() {
               variants={fadeUp}
               className="mt-10 text-sm font-medium text-slate-400 dark:text-slate-500"
             >
-              Trusted by healthcare organizations using Microsoft Dynamics 365
+              Trusted by healthcare organizations across the U.S.
             </motion.p>
+            <motion.div
+              variants={fadeUp}
+              className="mt-4 flex flex-wrap items-center gap-3"
+            >
+              {["Health System", "Medical Group", "Regional Hospital", "Care Network", "University Health"].map((name) => (
+                <div
+                  key={name}
+                  className="rounded-lg bg-slate-200/60 px-4 py-2 text-xs font-medium text-slate-400 dark:bg-slate-800/60 dark:text-slate-500"
+                >
+                  {name}
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
 
           {/* ---- Right: Dashboard mockup (desktop) ---- */}

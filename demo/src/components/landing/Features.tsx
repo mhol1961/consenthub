@@ -19,9 +19,12 @@ interface Feature {
   name: string;
   description: string;
   icon: LucideIcon;
-  /** Tailwind classes for the icon circle bg + icon color */
+  /** Tailwind classes for the icon container bg + icon color */
   iconBg: string;
   iconColor: string;
+  /** Top accent bar + hover border color */
+  accentColor: string;
+  hoverBorder: string;
 }
 
 const features: Feature[] = [
@@ -30,48 +33,60 @@ const features: Feature[] = [
     description:
       "Digital signatures, customizable templates, multi-channel consent capture with legally-binding e-signatures.",
     icon: FileSignature,
-    iconBg: "bg-teal/10 group-hover:bg-teal/15 dark:bg-teal/15 dark:group-hover:bg-teal/20",
-    iconColor: "text-teal",
+    iconBg: "bg-teal-100 dark:bg-teal-900/50",
+    iconColor: "text-teal-600 dark:text-teal-400",
+    accentColor: "bg-teal-500",
+    hoverBorder: "group-hover:border-teal-400 dark:group-hover:border-teal-600",
   },
   {
     name: "Dynamics 365 Integration",
     description:
       "Real-time bi-directional sync. Consent status flows to Dynamics, contact changes flow back.",
     icon: ArrowLeftRight,
-    iconBg: "bg-indigo/10 group-hover:bg-indigo/15 dark:bg-indigo/15 dark:group-hover:bg-indigo/20",
-    iconColor: "text-indigo",
+    iconBg: "bg-blue-100 dark:bg-blue-900/50",
+    iconColor: "text-blue-600 dark:text-blue-400",
+    accentColor: "bg-blue-500",
+    hoverBorder: "group-hover:border-blue-400 dark:group-hover:border-blue-600",
   },
   {
     name: "HIPAA Compliance",
     description:
       "Immutable audit trail with SHA-256 checksums. Every action logged, every change tracked.",
     icon: ShieldCheck,
-    iconBg: "bg-emerald-500/10 group-hover:bg-emerald-500/15 dark:bg-emerald-400/15 dark:group-hover:bg-emerald-400/20",
+    iconBg: "bg-emerald-100 dark:bg-emerald-900/50",
     iconColor: "text-emerald-600 dark:text-emerald-400",
+    accentColor: "bg-emerald-500",
+    hoverBorder: "group-hover:border-emerald-400 dark:group-hover:border-emerald-600",
   },
   {
     name: "Patient Portal",
     description:
       "Self-service preference management. Patients control their own consent via secure magic links.",
     icon: Smartphone,
-    iconBg: "bg-sky-500/10 group-hover:bg-sky-500/15 dark:bg-sky-400/15 dark:group-hover:bg-sky-400/20",
-    iconColor: "text-sky-600 dark:text-sky-400",
+    iconBg: "bg-violet-100 dark:bg-violet-900/50",
+    iconColor: "text-violet-600 dark:text-violet-400",
+    accentColor: "bg-violet-500",
+    hoverBorder: "group-hover:border-violet-400 dark:group-hover:border-violet-600",
   },
   {
     name: "Admin Dashboard",
     description:
       "Real-time metrics, compliance rates, expiring consents, and exportable reports at a glance.",
     icon: LayoutDashboard,
-    iconBg: "bg-amber-500/10 group-hover:bg-amber-500/15 dark:bg-amber-400/15 dark:group-hover:bg-amber-400/20",
+    iconBg: "bg-amber-100 dark:bg-amber-900/50",
     iconColor: "text-amber-600 dark:text-amber-400",
+    accentColor: "bg-amber-500",
+    hoverBorder: "group-hover:border-amber-400 dark:group-hover:border-amber-600",
   },
   {
     name: "Full API",
     description:
       "REST API, Power Automate connectors, Zapier, n8n. Integrate with your existing workflow tools.",
     icon: Plug,
-    iconBg: "bg-rose-500/10 group-hover:bg-rose-500/15 dark:bg-rose-400/15 dark:group-hover:bg-rose-400/20",
-    iconColor: "text-rose-600 dark:text-rose-400",
+    iconBg: "bg-indigo-100 dark:bg-indigo-900/50",
+    iconColor: "text-indigo-600 dark:text-indigo-400",
+    accentColor: "bg-indigo-500",
+    hoverBorder: "group-hover:border-indigo-400 dark:group-hover:border-indigo-600",
   },
 ];
 
@@ -110,7 +125,7 @@ const cardFadeUp = {
 
 export default function Features() {
   return (
-    <section id="features" className="bg-white py-24 dark:bg-slate-900">
+    <section id="features" className="bg-gradient-to-b from-slate-50 to-white py-24 dark:from-slate-900 dark:to-slate-950">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -123,7 +138,7 @@ export default function Features() {
           <p className="text-sm font-semibold uppercase tracking-widest text-teal">
             Platform Features
           </p>
-          <h2 className="mt-3 font-serif text-3xl text-navy sm:text-4xl">
+          <h2 className="mt-3 font-serif text-4xl font-bold text-navy md:text-5xl">
             Everything You Need for Compliant Consent
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-slate-500 dark:text-slate-400">
@@ -147,19 +162,22 @@ export default function Features() {
               <motion.div
                 key={feature.name}
                 variants={cardFadeUp}
-                className="group cursor-default rounded-xl border border-slate-200 bg-white p-8 transition-all duration-300 hover:-translate-y-0.5 hover:border-teal/40 hover:shadow-lg hover:shadow-slate-900/5 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-teal/30 dark:hover:shadow-teal-950/10"
+                className={`group relative cursor-default overflow-hidden rounded-xl border border-slate-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-900/5 dark:border-slate-700 dark:bg-slate-900 dark:hover:shadow-teal-950/10 ${feature.hoverBorder}`}
               >
+                {/* Colored top accent bar */}
+                <div className={`h-1 rounded-t-xl -mx-6 -mt-6 mb-6 ${feature.accentColor}`} />
+
                 <div
-                  className={`mb-5 flex h-12 w-12 items-center justify-center rounded-xl transition-colors duration-300 ${feature.iconBg}`}
+                  className={`mb-5 flex h-12 w-12 items-center justify-center rounded-xl ${feature.iconBg}`}
                 >
                   <Icon className={`h-6 w-6 ${feature.iconColor}`} />
                 </div>
 
-                <h3 className="mb-2 font-serif text-lg font-semibold text-navy">
+                <h3 className="mb-2 text-lg font-semibold text-navy">
                   {feature.name}
                 </h3>
 
-                <p className="text-[0.95rem] leading-relaxed text-slate-500 dark:text-slate-400">
+                <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                   {feature.description}
                 </p>
               </motion.div>
