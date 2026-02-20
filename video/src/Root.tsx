@@ -43,7 +43,7 @@ export const RemotionRoot: React.FC = () => {
       </Folder>
       <Folder name="Demos">
         <Composition id="two-min-demo" component={TwoMinDemo} durationInFrames={3600} fps={30} width={1920} height={1080} />
-        <Composition id="full-overview" component={FullOverview} durationInFrames={13500} fps={30} width={1920} height={1080} />
+        <Composition id="full-overview" component={FullOverview} durationInFrames={9048} fps={30} width={1920} height={1080} />
       </Folder>
     </>
   );

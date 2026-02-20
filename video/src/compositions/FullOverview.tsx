@@ -16,33 +16,46 @@ import { CTAEndCard } from "../scenes/CTAEndCard";
 import { SectionTitle } from "../scenes/SectionTitle";
 
 /**
- * FullOverview — Complete 7.5-minute overview
- * 450 seconds = 13500 frames at 30fps
+ * FullOverview — Complete ~5-minute overview (tightened pacing)
  *
- * 17 sequences (10 scenes + 7 section titles)
- * 16 transitions at 20f each = 320 frames overlap
+ * Scene durations = voiceover duration + ~100 frames (3.3s) breathing room.
+ * No more 15-20 second dead air gaps.
  *
- * Visual start frames:
+ * VO durations (frames):
+ *   logo-intro: 202       → scene: 300 (intro gets extra time for logo animation)
+ *   problem-scene: 795    → scene: 895
+ *   solution-scene: 860   → scene: 960
+ *   dashboard-demo: 822   → scene: 922
+ *   consent-wizard: 1017  → scene: 1117
+ *   sync-visualization: 827 → scene: 927
+ *   audit-trail: 848      → scene: 948
+ *   feature-grid: 946     → scene: 1046
+ *   pricing-comparison: 963 → scene: 1063
+ *   cta-endcard: 250      → scene: 350
+ *   Section titles: 120f each (VO ~37-44f plays during them)
+ *
+ * Sum of sequences: 9368
+ * Transitions: 16 x 20f = 320 overlap
+ * Actual: 9368 - 320 = 9048 frames = 301.6s (~5 min)
+ *
+ * Scene start frames:
  *   LogoIntro:          0       (300f)
  *   TitleTheProblem:    280     (120f)
- *   ProblemScene:       380     (1350f)
- *   TitleTheSolution:   1710    (120f)
- *   SolutionScene:      1810    (1350f)
- *   TitleThePlatform:   3140    (120f)
- *   DashboardDemo:      3240    (1950f)
- *   TitleHowItWorks:    5170    (120f)
- *   ConsentWizard:      5270    (1800f)
- *   SyncVisualization:  7050    (1470f)
- *   AuditTrail:         8500    (1470f)
- *   TitleKeyFeatures:   9950    (120f)
- *   FeatureGrid:        10050   (1320f)
- *   TitlePricing:       11350   (120f)
- *   PricingComparison:  11450   (1320f)
- *   TitleGetStarted:    12750   (120f)
- *   CTAEndCard:         12850   (650f)
- *
- * VO starts at SECTION TITLE frames (not scene frames) to eliminate dead air.
- * Title VO (~1.3s) plays during title card, then scene VO follows immediately.
+ *   ProblemScene:       380     (895f)
+ *   TitleTheSolution:   1255    (120f)
+ *   SolutionScene:      1355    (960f)
+ *   TitleThePlatform:   2295    (120f)
+ *   DashboardDemo:      2395    (922f)
+ *   TitleHowItWorks:    3297    (120f)
+ *   ConsentWizard:      3397    (1117f)
+ *   SyncVisualization:  4494    (927f)
+ *   AuditTrail:         5401    (948f)
+ *   TitleKeyFeatures:   6329    (120f)
+ *   FeatureGrid:        6429    (1046f)
+ *   TitlePricing:       7455    (120f)
+ *   PricingComparison:  7555    (1063f)
+ *   TitleGetStarted:    8598    (120f)
+ *   CTAEndCard:         8698    (350f)
  */
 
 const TitleTheProblem: React.FC = () => <SectionTitle title="The Problem" />;
@@ -56,15 +69,15 @@ const TitleGetStarted: React.FC = () => <SectionTitle title="Get Started" />;
 export const FullOverview: React.FC = () => {
   return (
     <AbsoluteFill>
-      {/* Background music — loops for entire 7.5 minutes */}
+      {/* Background music — loops for entire video */}
       <Audio src={staticFile("background-music.mp3")} volume={0.12} loop />
 
-      {/* Logo intro VO — starts immediately */}
+      {/* Logo intro */}
       <Sequence from={0}>
         <Audio src={staticFile("audio/logo-intro.mp3")} volume={0.88} />
       </Sequence>
 
-      {/* "The Problem" title VO at frame 280, then scene VO after title (~37f later) */}
+      {/* "The Problem" — title VO then scene VO immediately after */}
       <Sequence from={280}>
         <Audio src={staticFile("audio/title-the-problem.mp3")} volume={0.88} />
       </Sequence>
@@ -72,63 +85,63 @@ export const FullOverview: React.FC = () => {
         <Audio src={staticFile("audio/problem-scene.mp3")} volume={0.88} />
       </Sequence>
 
-      {/* "The Solution" title VO at frame 1710, then scene VO */}
-      <Sequence from={1710}>
+      {/* "The Solution" */}
+      <Sequence from={1255}>
         <Audio src={staticFile("audio/title-the-solution.mp3")} volume={0.88} />
       </Sequence>
-      <Sequence from={1752}>
+      <Sequence from={1297}>
         <Audio src={staticFile("audio/solution-scene.mp3")} volume={0.88} />
       </Sequence>
 
-      {/* "The Platform" title VO at frame 3140, then scene VO */}
-      <Sequence from={3140}>
+      {/* "The Platform" */}
+      <Sequence from={2295}>
         <Audio src={staticFile("audio/title-the-platform.mp3")} volume={0.88} />
       </Sequence>
-      <Sequence from={3182}>
+      <Sequence from={2337}>
         <Audio src={staticFile("audio/dashboard-demo.mp3")} volume={0.88} />
       </Sequence>
 
-      {/* "How It Works" title VO at frame 5170, then scene VO */}
-      <Sequence from={5170}>
+      {/* "How It Works" */}
+      <Sequence from={3297}>
         <Audio src={staticFile("audio/title-how-it-works.mp3")} volume={0.88} />
       </Sequence>
-      <Sequence from={5215}>
+      <Sequence from={3342}>
         <Audio src={staticFile("audio/consent-wizard.mp3")} volume={0.88} />
       </Sequence>
 
-      {/* Sync and Audit scenes (no title cards — flow from "How It Works") */}
-      <Sequence from={7050}>
+      {/* Sync and Audit — flow from "How It Works", no title cards */}
+      <Sequence from={4494}>
         <Audio src={staticFile("audio/sync-visualization.mp3")} volume={0.88} />
       </Sequence>
-      <Sequence from={8500}>
+      <Sequence from={5401}>
         <Audio src={staticFile("audio/audit-trail.mp3")} volume={0.88} />
       </Sequence>
 
-      {/* "Key Features" title VO at frame 9950, then scene VO */}
-      <Sequence from={9950}>
+      {/* "Key Features" */}
+      <Sequence from={6329}>
         <Audio src={staticFile("audio/title-key-features.mp3")} volume={0.88} />
       </Sequence>
-      <Sequence from={9996}>
+      <Sequence from={6375}>
         <Audio src={staticFile("audio/feature-grid.mp3")} volume={0.88} />
       </Sequence>
 
-      {/* "Pricing" title VO at frame 11350, then scene VO */}
-      <Sequence from={11350}>
+      {/* "Pricing" */}
+      <Sequence from={7455}>
         <Audio src={staticFile("audio/title-pricing.mp3")} volume={0.88} />
       </Sequence>
-      <Sequence from={11387}>
+      <Sequence from={7492}>
         <Audio src={staticFile("audio/pricing-comparison.mp3")} volume={0.88} />
       </Sequence>
 
-      {/* "Get Started" title VO at frame 12750, then CTA VO */}
-      <Sequence from={12750}>
+      {/* "Get Started" */}
+      <Sequence from={8598}>
         <Audio src={staticFile("audio/title-get-started.mp3")} volume={0.88} />
       </Sequence>
-      <Sequence from={12794}>
+      <Sequence from={8642}>
         <Audio src={staticFile("audio/cta-endcard.mp3")} volume={0.88} />
       </Sequence>
 
-      {/* Visual content */}
+      {/* Visual content — tightened scene durations */}
       <TransitionSeries>
         <TransitionSeries.Sequence durationInFrames={300}>
           <LogoIntro />
@@ -148,7 +161,7 @@ export const FullOverview: React.FC = () => {
           timing={linearTiming({ durationInFrames: 20 })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={1350}>
+        <TransitionSeries.Sequence durationInFrames={895}>
           <ProblemScene />
         </TransitionSeries.Sequence>
 
@@ -166,7 +179,7 @@ export const FullOverview: React.FC = () => {
           timing={linearTiming({ durationInFrames: 20 })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={1350}>
+        <TransitionSeries.Sequence durationInFrames={960}>
           <SolutionScene />
         </TransitionSeries.Sequence>
 
@@ -184,7 +197,7 @@ export const FullOverview: React.FC = () => {
           timing={linearTiming({ durationInFrames: 20 })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={1950}>
+        <TransitionSeries.Sequence durationInFrames={922}>
           <DashboardDemo />
         </TransitionSeries.Sequence>
 
@@ -202,7 +215,7 @@ export const FullOverview: React.FC = () => {
           timing={linearTiming({ durationInFrames: 20 })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={1800}>
+        <TransitionSeries.Sequence durationInFrames={1117}>
           <ConsentWizard />
         </TransitionSeries.Sequence>
 
@@ -211,7 +224,7 @@ export const FullOverview: React.FC = () => {
           timing={linearTiming({ durationInFrames: 20 })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={1470}>
+        <TransitionSeries.Sequence durationInFrames={927}>
           <SyncVisualization />
         </TransitionSeries.Sequence>
 
@@ -220,7 +233,7 @@ export const FullOverview: React.FC = () => {
           timing={linearTiming({ durationInFrames: 20 })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={1470}>
+        <TransitionSeries.Sequence durationInFrames={948}>
           <AuditTrail />
         </TransitionSeries.Sequence>
 
@@ -238,7 +251,7 @@ export const FullOverview: React.FC = () => {
           timing={linearTiming({ durationInFrames: 20 })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={1320}>
+        <TransitionSeries.Sequence durationInFrames={1046}>
           <FeatureGrid />
         </TransitionSeries.Sequence>
 
@@ -256,7 +269,7 @@ export const FullOverview: React.FC = () => {
           timing={linearTiming({ durationInFrames: 20 })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={1320}>
+        <TransitionSeries.Sequence durationInFrames={1063}>
           <PricingComparison />
         </TransitionSeries.Sequence>
 
@@ -274,7 +287,7 @@ export const FullOverview: React.FC = () => {
           timing={linearTiming({ durationInFrames: 20 })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={650}>
+        <TransitionSeries.Sequence durationInFrames={350}>
           <CTAEndCard />
         </TransitionSeries.Sequence>
       </TransitionSeries>
