@@ -1,5 +1,6 @@
 import React from "react";
-import { AbsoluteFill } from "remotion";
+import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { Audio } from "@remotion/media";
 import { TransitionSeries, linearTiming } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
 import { LogoIntro } from "../scenes/LogoIntro";
@@ -22,27 +23,24 @@ import { SectionTitle } from "../scenes/SectionTitle";
  * 16 transitions at 20f each = 320 frames overlap
  * Total sequence frames: 13500 + 320 = 13820
  *
- * Scene durations:
- *   LogoIntro:            300f  (10s)
- *   "The Problem":        120f  (4s)
- *   ProblemScene:        1350f  (45s)
- *   "The Solution":       120f  (4s)
- *   SolutionScene:       1350f  (45s)
- *   "The Platform":       120f  (4s)
- *   DashboardDemo:       1950f  (65s)
- *   "How It Works":       120f  (4s)
- *   ConsentWizard:       1800f  (60s)
- *   SyncVisualization:   1470f  (49s)
- *   AuditTrail:          1470f  (49s)
- *   "Key Features":       120f  (4s)
- *   FeatureGrid:         1320f  (44s)
- *   "Pricing":            120f  (4s)
- *   PricingComparison:   1320f  (44s)
- *   "Get Started":        120f  (4s)
- *   CTAEndCard:           650f  (21.7s)
- *
- * Sum: 13820 sequence frames
- * Actual: 13820 - 320 = 13500
+ * Audio start frames (cumulative - transitions):
+ *   LogoIntro:          0
+ *   TitleTheProblem:    300 - 20 = 280       (no VO)
+ *   ProblemScene:       280 + 120 - 20 = 380
+ *   TitleTheSolution:   380 + 1350 - 20 = 1710  (no VO)
+ *   SolutionScene:      1710 + 120 - 20 = 1810
+ *   TitleThePlatform:   1810 + 1350 - 20 = 3140  (no VO)
+ *   DashboardDemo:      3140 + 120 - 20 = 3240
+ *   TitleHowItWorks:    3240 + 1950 - 20 = 5170  (no VO)
+ *   ConsentWizard:      5170 + 120 - 20 = 5270
+ *   SyncVisualization:  5270 + 1800 - 20 = 7050
+ *   AuditTrail:         7050 + 1470 - 20 = 8500
+ *   TitleKeyFeatures:   8500 + 1470 - 20 = 9950  (no VO)
+ *   FeatureGrid:        9950 + 120 - 20 = 10050
+ *   TitlePricing:       10050 + 1320 - 20 = 11350  (no VO)
+ *   PricingComparison:  11350 + 120 - 20 = 11450
+ *   TitleGetStarted:    11450 + 1320 - 20 = 12750  (no VO)
+ *   CTAEndCard:         12750 + 120 - 20 = 12850
  */
 
 const TitleTheProblem: React.FC = () => <SectionTitle title="The Problem" />;
@@ -56,6 +54,42 @@ const TitleGetStarted: React.FC = () => <SectionTitle title="Get Started" />;
 export const FullOverview: React.FC = () => {
   return (
     <AbsoluteFill>
+      {/* Background music — loops for entire 7.5 minutes */}
+      <Audio src={staticFile("background-music.mp3")} volume={0.12} loop />
+
+      {/* Full voiceover per scene (section titles have no VO) */}
+      <Sequence from={0}>
+        <Audio src={staticFile("audio/logo-intro.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={380}>
+        <Audio src={staticFile("audio/problem-scene.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={1810}>
+        <Audio src={staticFile("audio/solution-scene.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={3240}>
+        <Audio src={staticFile("audio/dashboard-demo.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={5270}>
+        <Audio src={staticFile("audio/consent-wizard.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={7050}>
+        <Audio src={staticFile("audio/sync-visualization.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={8500}>
+        <Audio src={staticFile("audio/audit-trail.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={10050}>
+        <Audio src={staticFile("audio/feature-grid.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={11450}>
+        <Audio src={staticFile("audio/pricing-comparison.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={12850}>
+        <Audio src={staticFile("audio/cta-endcard.mp3")} volume={0.88} />
+      </Sequence>
+
+      {/* Visual content */}
       <TransitionSeries>
         {/* Logo intro */}
         <TransitionSeries.Sequence durationInFrames={300}>

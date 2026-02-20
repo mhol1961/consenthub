@@ -1,5 +1,6 @@
 import React from "react";
-import { AbsoluteFill } from "remotion";
+import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { Audio } from "@remotion/media";
 import { TransitionSeries, linearTiming } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
 import { slide } from "@remotion/transitions/slide";
@@ -16,10 +17,34 @@ import { CTAEndCard } from "../scenes/CTAEndCard";
  * Transitions: fade(15f), slide(from-right, 15f), fade(15f)
  * Duration math: 105 + 300 + 360 + 180 = 945 sequence frames
  *               945 - (3 * 15) = 900 actual frames
+ *
+ * Audio start frames:
+ *   LogoIntro:      0
+ *   AuditTrail:     105 - 15 = 90
+ *   ConsentWizard:  90 + 300 - 15 = 375
+ *   CTAEndCard:     375 + 360 - 15 = 720
  */
 export const ShortClip3: React.FC = () => {
   return (
     <AbsoluteFill>
+      {/* Background music */}
+      <Audio src={staticFile("background-music.mp3")} volume={0.12} loop />
+
+      {/* Voiceover per scene */}
+      <Sequence from={0}>
+        <Audio src={staticFile("audio/clip3-intro.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={90}>
+        <Audio src={staticFile("audio/clip3-audit.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={375}>
+        <Audio src={staticFile("audio/clip3-wizard.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={720}>
+        <Audio src={staticFile("audio/clip3-cta.mp3")} volume={0.88} />
+      </Sequence>
+
+      {/* Visual content */}
       <TransitionSeries>
         <TransitionSeries.Sequence durationInFrames={105}>
           <LogoIntro />

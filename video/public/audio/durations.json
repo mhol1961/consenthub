@@ -1,0 +1,182 @@
+{
+  "logo-intro": {
+    "seconds": 7.06,
+    "frames": 212,
+    "file": "audio/logo-intro.mp3"
+  },
+  "problem-scene": {
+    "seconds": 28.8,
+    "frames": 864,
+    "file": "audio/problem-scene.mp3"
+  },
+  "solution-scene": {
+    "seconds": 30.77,
+    "frames": 923,
+    "file": "audio/solution-scene.mp3"
+  },
+  "dashboard-demo": {
+    "seconds": 28.61,
+    "frames": 858,
+    "file": "audio/dashboard-demo.mp3"
+  },
+  "consent-wizard": {
+    "seconds": 36.05,
+    "frames": 1081,
+    "file": "audio/consent-wizard.mp3"
+  },
+  "sync-visualization": {
+    "seconds": 33.26,
+    "frames": 998,
+    "file": "audio/sync-visualization.mp3"
+  },
+  "audit-trail": {
+    "seconds": 30.26,
+    "frames": 908,
+    "file": "audio/audit-trail.mp3"
+  },
+  "pricing-comparison": {
+    "seconds": 33.74,
+    "frames": 1012,
+    "file": "audio/pricing-comparison.mp3"
+  },
+  "feature-grid": {
+    "seconds": 33.46,
+    "frames": 1004,
+    "file": "audio/feature-grid.mp3"
+  },
+  "cta-endcard": {
+    "seconds": 8.74,
+    "frames": 262,
+    "file": "audio/cta-endcard.mp3"
+  },
+  "logo-intro-brief": {
+    "seconds": 5.98,
+    "frames": 179,
+    "file": "audio/logo-intro-brief.mp3"
+  },
+  "problem-scene-brief": {
+    "seconds": 10.68,
+    "frames": 320,
+    "file": "audio/problem-scene-brief.mp3"
+  },
+  "solution-scene-brief": {
+    "seconds": 8.45,
+    "frames": 253,
+    "file": "audio/solution-scene-brief.mp3"
+  },
+  "dashboard-demo-brief": {
+    "seconds": 8.78,
+    "frames": 264,
+    "file": "audio/dashboard-demo-brief.mp3"
+  },
+  "consent-wizard-brief": {
+    "seconds": 9.79,
+    "frames": 294,
+    "file": "audio/consent-wizard-brief.mp3"
+  },
+  "sync-visualization-brief": {
+    "seconds": 9.65,
+    "frames": 289,
+    "file": "audio/sync-visualization-brief.mp3"
+  },
+  "audit-trail-brief": {
+    "seconds": 8.57,
+    "frames": 257,
+    "file": "audio/audit-trail-brief.mp3"
+  },
+  "feature-grid-brief": {
+    "seconds": 9.84,
+    "frames": 295,
+    "file": "audio/feature-grid-brief.mp3"
+  },
+  "pricing-comparison-brief": {
+    "seconds": 7.37,
+    "frames": 221,
+    "file": "audio/pricing-comparison-brief.mp3"
+  },
+  "cta-endcard-brief": {
+    "seconds": 3.6,
+    "frames": 108,
+    "file": "audio/cta-endcard-brief.mp3"
+  },
+  "clip1-intro": {
+    "seconds": 1.44,
+    "frames": 43,
+    "file": "audio/clip1-intro.mp3"
+  },
+  "clip1-problem": {
+    "seconds": 8.3,
+    "frames": 249,
+    "file": "audio/clip1-problem.mp3"
+  },
+  "clip1-solution": {
+    "seconds": 7.01,
+    "frames": 210,
+    "file": "audio/clip1-solution.mp3"
+  },
+  "clip1-cta": {
+    "seconds": 3.1,
+    "frames": 93,
+    "file": "audio/clip1-cta.mp3"
+  },
+  "clip2-intro": {
+    "seconds": 1.44,
+    "frames": 43,
+    "file": "audio/clip2-intro.mp3"
+  },
+  "clip2-sync": {
+    "seconds": 8.57,
+    "frames": 257,
+    "file": "audio/clip2-sync.mp3"
+  },
+  "clip2-dashboard": {
+    "seconds": 7.15,
+    "frames": 215,
+    "file": "audio/clip2-dashboard.mp3"
+  },
+  "clip2-cta": {
+    "seconds": 3.53,
+    "frames": 106,
+    "file": "audio/clip2-cta.mp3"
+  },
+  "clip3-intro": {
+    "seconds": 1.44,
+    "frames": 43,
+    "file": "audio/clip3-intro.mp3"
+  },
+  "clip3-audit": {
+    "seconds": 7.9,
+    "frames": 237,
+    "file": "audio/clip3-audit.mp3"
+  },
+  "clip3-wizard": {
+    "seconds": 6.74,
+    "frames": 202,
+    "file": "audio/clip3-wizard.mp3"
+  },
+  "clip3-cta": {
+    "seconds": 3.53,
+    "frames": 106,
+    "file": "audio/clip3-cta.mp3"
+  },
+  "clip4-intro": {
+    "seconds": 1.44,
+    "frames": 43,
+    "file": "audio/clip4-intro.mp3"
+  },
+  "clip4-pricing": {
+    "seconds": 7.54,
+    "frames": 226,
+    "file": "audio/clip4-pricing.mp3"
+  },
+  "clip4-features": {
+    "seconds": 7.56,
+    "frames": 227,
+    "file": "audio/clip4-features.mp3"
+  },
+  "clip4-cta": {
+    "seconds": 3.34,
+    "frames": 100,
+    "file": "audio/clip4-cta.mp3"
+  }
+}

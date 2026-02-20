@@ -1,5 +1,6 @@
 import React from "react";
-import { AbsoluteFill } from "remotion";
+import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { Audio } from "@remotion/media";
 import { TransitionSeries, linearTiming } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
 import { LogoIntro } from "../scenes/LogoIntro";
@@ -35,10 +36,58 @@ import { CTAEndCard } from "../scenes/CTAEndCard";
  *
  * Sum: 135+360+360+540+450+390+360+360+360+420 = 3735
  * Actual: 3735 - 135 = 3600
+ *
+ * Audio start frames (cumulative - transitions):
+ *   LogoIntro:          0
+ *   ProblemScene:       135 - 15 = 120
+ *   SolutionScene:      120 + 360 - 15 = 465
+ *   DashboardDemo:      465 + 360 - 15 = 810
+ *   ConsentWizard:      810 + 540 - 15 = 1335
+ *   SyncVisualization:  1335 + 450 - 15 = 1770
+ *   AuditTrail:         1770 + 390 - 15 = 2145
+ *   FeatureGrid:        2145 + 360 - 15 = 2490
+ *   PricingComparison:  2490 + 360 - 15 = 2835
+ *   CTAEndCard:         2835 + 360 - 15 = 3180
  */
 export const TwoMinDemo: React.FC = () => {
   return (
     <AbsoluteFill>
+      {/* Background music — loops for entire 2 minutes */}
+      <Audio src={staticFile("background-music.mp3")} volume={0.12} loop />
+
+      {/* Brief voiceover per scene */}
+      <Sequence from={0}>
+        <Audio src={staticFile("audio/logo-intro-brief.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={120}>
+        <Audio src={staticFile("audio/problem-scene-brief.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={465}>
+        <Audio src={staticFile("audio/solution-scene-brief.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={810}>
+        <Audio src={staticFile("audio/dashboard-demo-brief.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={1335}>
+        <Audio src={staticFile("audio/consent-wizard-brief.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={1770}>
+        <Audio src={staticFile("audio/sync-visualization-brief.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={2145}>
+        <Audio src={staticFile("audio/audit-trail-brief.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={2490}>
+        <Audio src={staticFile("audio/feature-grid-brief.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={2835}>
+        <Audio src={staticFile("audio/pricing-comparison-brief.mp3")} volume={0.88} />
+      </Sequence>
+      <Sequence from={3180}>
+        <Audio src={staticFile("audio/cta-endcard-brief.mp3")} volume={0.88} />
+      </Sequence>
+
+      {/* Visual content */}
       <TransitionSeries>
         <TransitionSeries.Sequence durationInFrames={135}>
           <LogoIntro />
