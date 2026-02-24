@@ -1,6 +1,8 @@
 import React from "react";
 import {
   AbsoluteFill,
+  Img,
+  staticFile,
   useCurrentFrame,
   useVideoConfig,
   spring,
@@ -25,6 +27,7 @@ interface Feature {
   description: string;
   accentColor: string;
   Icon: React.FC<{ size?: number; color?: string; strokeWidth?: number }>;
+  screenshot?: string; // optional screenshot file
 }
 
 const FEATURES: Feature[] = [
@@ -33,6 +36,7 @@ const FEATURES: Feature[] = [
     description: "Capture legally-binding consent with e-signatures and full audit trail",
     accentColor: COLORS.teal,
     Icon: FileSignature,
+    screenshot: "consent-templates.png",
   },
   {
     title: "Dynamics 365 Integration",
@@ -45,6 +49,7 @@ const FEATURES: Feature[] = [
     description: "Built-in regulatory compliance with immutable audit logs",
     accentColor: "#10B981",
     Icon: ShieldCheck,
+    screenshot: "audit-log.png",
   },
   {
     title: "Patient Portal",
@@ -57,12 +62,14 @@ const FEATURES: Feature[] = [
     description: "Real-time analytics, compliance metrics, and team management",
     accentColor: "#F59E0B",
     Icon: LayoutDashboard,
+    screenshot: "admin-settings.png",
   },
   {
     title: "Full API",
     description: "RESTful API with webhooks for custom integrations",
     accentColor: COLORS.indigo,
     Icon: Plug,
+    screenshot: "reports.png",
   },
 ];
 
@@ -128,27 +135,71 @@ export const FeatureGrid: React.FC = () => {
                     flexDirection: "column",
                   }}
                 >
-                  {/* Colored top accent bar */}
+                  {/* Screenshot thumbnail or colored accent bar */}
+                  {card.screenshot ? (
+                    <div
+                      style={{
+                        height: 100,
+                        overflow: "hidden",
+                        position: "relative",
+                      }}
+                    >
+                      <Img
+                        src={staticFile(`screenshots/${card.screenshot}`)}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          objectPosition: "top",
+                          opacity: 0.7,
+                        }}
+                      />
+                      {/* Gradient overlay to blend into card */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          height: 40,
+                          background: `linear-gradient(to bottom, transparent, ${COLORS.slate800})`,
+                        }}
+                      />
+                      {/* Colored top border */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          height: 3,
+                          backgroundColor: card.accentColor,
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        height: 4,
+                        backgroundColor: card.accentColor,
+                        width: "100%",
+                      }}
+                    />
+                  )}
+
                   <div
                     style={{
-                      height: 4,
-                      backgroundColor: card.accentColor,
-                      width: "100%",
-                    }}
-                  />
-                  <div
-                    style={{
-                      padding: "28px 24px",
+                      padding: card.screenshot ? "12px 24px 24px" : "28px 24px",
                       display: "flex",
                       flexDirection: "column",
-                      gap: 14,
+                      gap: 10,
                     }}
                   >
                     {/* Icon circle */}
                     <div
                       style={{
-                        width: 48,
-                        height: 48,
+                        width: 44,
+                        height: 44,
                         borderRadius: 12,
                         backgroundColor: `${card.accentColor}18`,
                         display: "flex",
@@ -157,7 +208,7 @@ export const FeatureGrid: React.FC = () => {
                       }}
                     >
                       <IconComponent
-                        size={24}
+                        size={22}
                         color={card.accentColor}
                         strokeWidth={2}
                       />
@@ -165,7 +216,7 @@ export const FeatureGrid: React.FC = () => {
                     {/* Title */}
                     <span
                       style={{
-                        fontSize: 20,
+                        fontSize: 18,
                         fontFamily: FONTS.serif,
                         fontWeight: "bold",
                         color: COLORS.white,
@@ -176,7 +227,7 @@ export const FeatureGrid: React.FC = () => {
                     {/* Description */}
                     <span
                       style={{
-                        fontSize: 14,
+                        fontSize: 13,
                         fontFamily: FONTS.sans,
                         color: COLORS.slate400,
                         lineHeight: 1.5,
